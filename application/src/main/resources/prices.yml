@@ -1,0 +1,77 @@
+openapi: 3.0.0
+info:
+  title: Prices API
+  version: 1.0.0
+servers:
+  - url: 'http://localhost:8080'
+    description: dev
+paths:
+  /prices:
+    get:
+      summary: Get price info
+      operationId: getPrices
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                appliance_date:
+                  type: string
+                  format: date-time
+                  description: Appliance date of rating
+                product_id:
+                  type: integer
+                  format: int64
+                  description: Product identifier
+                brand_id:
+                  type: integer
+                  format: int64
+                  description: Product identifier
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetPrices200Response'
+        '400':
+          description: Incorrect input parameters
+          content:
+            application/json:
+              example:
+                error: "Incorrect input parameters"
+        '404':
+          description: Resource not found
+          content:
+            application/json:
+              example:
+                error: "Resource not found"
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              example:
+                error: "Internal server error"
+components:
+  schemas:
+    GetPrices200Response:
+      type: object
+      properties:
+        product_id:
+          type: integer
+          format: int64
+        brand_name:
+          type: string
+        price_list:
+          type: integer
+        start_date:
+          type: string
+          format: date-time
+        end_date:
+          type: string
+          format: date-time
+        price:
+          type: number
+          format: double
