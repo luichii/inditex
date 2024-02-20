@@ -5,11 +5,12 @@ import com.inditex.entity.PriceEntity;
 import com.inditex.mapper.PriceMapper;
 import com.inditex.port.PriceRepositoryPort;
 import com.inditex.repository.PriceRepository;
+import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
-import java.sql.Timestamp;
-import java.util.List;
+import java.time.LocalDateTime;
+import java.util.Optional;
 
 @Component
 @RequiredArgsConstructor
@@ -20,12 +21,16 @@ public class PriceRepositoryAdapter implements PriceRepositoryPort {
     private final PriceMapper priceMapper;
 
     @Override
-    public List<PriceDTO> findPricesByBrandIdAndProductIdAndDate(
-            Long brandId, Long productId, Timestamp applianceDate) {
+    public PriceDTO findPricesByBrandIdAndProductIdAndDate(
+        Long brandId, Long productId, LocalDateTime applianceDate) {
 
-        List<PriceEntity> entities = priceRepository.findPricesByBrandIdAndProductIdAndDate(
-                brandId, productId, applianceDate);
+        Optional<PriceEntity> priceEntityOptional = priceRepository.findPricesByBrandIdAndProductIdAndDate(
+            brandId, productId, applianceDate);
 
-        return priceMapper.toDto(entities);
+        if (priceEntityOptional.isEmpty()) {
+            throw new EntityNotFoundException("Price entity not found");
+        }
+
+        return priceMapper.toDto(priceEntityOptional.get());
     }
 }

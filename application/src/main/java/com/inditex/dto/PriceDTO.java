@@ -4,7 +4,6 @@ import java.time.LocalDateTime;
 
 
 public class PriceDTO {
-    private Long brandId;
     private Long productId;
     private Integer priceList;
 
@@ -14,13 +13,15 @@ public class PriceDTO {
     private String currency;
 
     private Integer priority;
+    private BrandDTO brandDTO;
 
     public PriceDTO() {
     }
 
-    public PriceDTO(Long brandId, Long productId, Integer priceList, LocalDateTime startDate, LocalDateTime endDate, Float price, String currency,
-                    Integer priority) {
-        this.brandId = brandId;
+
+    public PriceDTO(Long productId, Integer priceList, LocalDateTime startDate, LocalDateTime endDate, Float price, String currency,
+                    Integer priority, BrandDTO brandDTO) {
+        this.brandDTO = brandDTO;
         this.productId = productId;
         this.priceList = priceList;
         this.startDate = startDate;
@@ -30,12 +31,12 @@ public class PriceDTO {
         this.priority = priority;
     }
 
-    public Long getBrandId() {
-        return brandId;
+    public BrandDTO getBrandDTO() {
+        return brandDTO;
     }
 
-    public void setBrandId(Long brandId) {
-        this.brandId = brandId;
+    public void setBrandDTO(BrandDTO brandDTO) {
+        this.brandDTO = brandDTO;
     }
 
     public Long getProductId() {

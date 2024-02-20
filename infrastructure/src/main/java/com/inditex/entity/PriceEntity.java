@@ -2,15 +2,16 @@ package com.inditex.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
-import java.sql.Timestamp;
+import java.time.LocalDateTime;
 
 @Data
 @Entity
 @Table(name = "price")
+@NoArgsConstructor
 public class PriceEntity {
-
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,13 +19,13 @@ public class PriceEntity {
 
     @ManyToOne
     @JoinColumn(name = "brand_id")
-    private BrandEntity brand;
+    private BrandEntity brandEntity;
 
     @Column(name = "start_date")
-    private Timestamp startDate;
+    private LocalDateTime startDate;
 
     @Column(name = "end_date")
-    private Timestamp endDate;
+    private LocalDateTime endDate;
 
     @Column(name = "price_list")
     private Integer priceList;
@@ -40,4 +41,19 @@ public class PriceEntity {
 
     @Column(name = "curr")
     private String currency;
+
+    public PriceEntity(Long id, BrandEntity brandEntity, LocalDateTime startDate, LocalDateTime endDate,
+                       Integer priceList, Long productId, Integer priority, BigDecimal price,
+                       String currency) {
+        this.id = id;
+        this.brandEntity = brandEntity;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.priceList = priceList;
+        this.productId = productId;
+        this.priority = priority;
+        this.price = price;
+        this.currency = currency;
+    }
+
 }

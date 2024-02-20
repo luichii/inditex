@@ -5,18 +5,19 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
-import java.sql.Timestamp;
-import java.util.List;
+import java.time.LocalDateTime;
+import java.util.Optional;
 
 
 @Repository
 public interface PriceRepository extends JpaRepository<PriceEntity, Long> {
     @Query("SELECT p FROM PriceEntity p " +
-            "WHERE p.brand.id = :brandId " +
-            "AND p.productId = :productId " +
-            "AND p.startDate < :date " +
-            "AND p.endDate > :date " +
-            "ORDER BY p.priority DESC")
-    List<PriceEntity> findPricesByBrandIdAndProductIdAndDate(
-            Long brandId, Long productId, Timestamp date);
+        "JOIN FETCH p.brandEntity b " +
+        "WHERE b.id = :brandId " +
+        "AND p.productId = :productId " +
+        "AND p.startDate < :date " +
+        "AND p.endDate > :date " +
+        "ORDER BY p.priority DESC")
+    Optional<PriceEntity> findPricesByBrandIdAndProductIdAndDate(
+        Long brandId, Long productId, LocalDateTime date);
 }
