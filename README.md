@@ -6,8 +6,8 @@ ejemplo de la tabla con los campos relevantes:
 
 ### PRICES
 
-| BRAND_ID | START_DATE           | END_DATE             | PRICE_LIST | PRODUCT_ID | PRIORITY | PRICE | CURR |
-|----------|----------------------|----------------------|------------|------------|----------|-------|------|
+| BRAND_ID | START_DATE          | END_DATE            | PRICE_LIST | PRODUCT_ID | PRIORITY | PRICE | CURR |
+|----------|---------------------|---------------------|------------|------------|----------|-------|------|
 | 1        | 2020-06-14-00.00.00 | 2020-12-31-23.59.59 | 1          | 35455      | 0        | 35.50 | EUR  |
 | 1        | 2020-06-14-15.00.00 | 2020-06-14-18.30.00 | 2          | 35455      | 1        | 25.45 | EUR  |
 | 1        | 2020-06-15-00.00.00 | 2020-06-15-11.00.00 | 3          | 35455      | 1        | 30.50 | EUR  |
@@ -69,11 +69,19 @@ Resultados correctos en los test.
 Para testear el endpoint con curl
 
 `
-curl -i -X GET "http://localhost:8080/prices" -H "Accept: application/json" -H "Content-Type: application/json" -d "{\"appliance_date\":\"2020-06-14T20:27:54.857633100+01:00\",\"product_id\":35455,\"brand_id\":1}"
+curl -i -X GET "http://localhost:8080/prices?appliance_date=2020-06-14T10:00:00.00&product_id=35455&brand_id=1" -H "Accept: application/json"
 `
 
+# Patrones usados
 
-# TODO
+    - Patron builder
+    - Inyeccion de dependencias: Usando en este caso inyeccion por constructor usando spring boot y Lombok.
+    - Patron Adapter: Para convertir una interficie a otra interficie (ej: PriceRpositoryAdapter)
+    - Singelton: Para la conexion a base de datos
+    - Bridge:  En PriceRepository entre la lógica de negocio y la infraestructura de datos
 
-- Mas test de integracion y unit test
-- Mappear brand name en la respuesta
+# Porque estructura proyecto modulos
+
+    - Construccion proyecto: Al usar un pom para cada capa permite evitar dependencias circulares.
+    - Dependencias: Los módulos pueden utilizarse para evitar dependencias circulares. Esto ayuda a mantener una arquitectura clara y controlada.
+    - Aislamiento y flexibilidad: Los módulos proporcionan un alto nivel de aislamiento y flexibilidad, permitiendo la adición dinámica de adaptadores sin recompilar otros adaptadores en la capa.
