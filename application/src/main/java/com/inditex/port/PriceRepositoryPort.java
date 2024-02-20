@@ -2,10 +2,9 @@ package com.inditex.port;
 
 import com.inditex.dto.PriceDTO;
 
-import java.sql.Timestamp;
-import java.util.List;
+import java.time.LocalDateTime;
 
 public interface PriceRepositoryPort {
-    List<PriceDTO> findPricesByBrandIdAndProductIdAndDate(
-            Long brandId, Long productId, Timestamp applianceDate);
+    PriceDTO findPricesByBrandIdAndProductIdAndDate(
+        Long brandId, Long productId, LocalDateTime applianceDate);
 }

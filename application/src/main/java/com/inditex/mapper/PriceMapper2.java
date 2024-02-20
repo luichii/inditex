@@ -1,18 +1,17 @@
 package com.inditex.mapper;
 
 import com.inditex.dto.PriceDTO;
-import com.inditex.model.Price;
+import com.inditex.model.PriceInfo;
 import com.inditex.openapi.samples.gen.springbootserver.model.GetPrices200ResponseDto;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
-@Mapper(componentModel = "spring", uses = DateMapper.class)
+@Mapper(componentModel = "spring", uses = BrandMapper.class)
 public interface PriceMapper2 {
 
-    @Mapping(target = "startDate", source = "startDate", qualifiedByName = "mapToLocalDateTime")
-    @Mapping(target = "endDate", source = "endDate", qualifiedByName = "mapToLocalDateTime")
-    @Mapping(target = "brandName", source= "price.brand.name")
-    GetPrices200ResponseDto toDto(Price price);
+    @Mapping(target = "brandName", source = "priceInfo.brand.name")
+    GetPrices200ResponseDto toDto(PriceInfo priceInfo);
 
-    Price toPrice(PriceDTO priceDTO);
+    @Mapping(target = "brand", source = "priceDTO.brandDTO")
+    PriceInfo toPrice(PriceDTO priceDTO);
 }

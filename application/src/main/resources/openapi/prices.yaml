@@ -10,25 +10,28 @@ paths:
     get:
       summary: Get price info
       operationId: getPrices
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                appliance_date:
-                  type: string
-                  format: date-time
-                  description: Appliance date of rating
-                product_id:
-                  type: integer
-                  format: int64
-                  description: Product identifier
-                brand_id:
-                  type: integer
-                  format: int64
-                  description: Product identifier
+      parameters: # Define query parameters here
+        - name: appliance_date
+          in: query
+          description: Appliance date of rating
+          required: true
+          schema:
+            type: string
+            format: date-time
+        - name: product_id
+          in: query
+          description: Product identifier
+          required: true
+          schema:
+            type: integer
+            format: int64
+        - name: brand_id
+          in: query
+          description: Brand identifier
+          required: true
+          schema:
+            type: integer
+            format: int64
       responses:
         '200':
           description: Success
@@ -75,3 +78,5 @@ components:
         price:
           type: number
           format: double
+        currency:
+          type: string

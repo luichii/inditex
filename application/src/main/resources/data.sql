@@ -1,22 +1,3 @@
-CREATE TABLE IF NOT EXISTS BRAND (
-    ID BIGINT PRIMARY KEY AUTO_INCREMENT,
-    NAME VARCHAR(15)
-);
-
-CREATE TABLE IF NOT EXISTS PRICE (
-    ID BIGINT PRIMARY KEY AUTO_INCREMENT,
-    BRAND_ID INT,
-    START_DATE TIMESTAMP,
-    END_DATE TIMESTAMP,
-    PRICE_LIST INT,
-    PRODUCT_ID BIGINT,
-    PRIORITY INT,
-    PRICE DECIMAL(10, 2),
-    CURR VARCHAR(3),
-    FOREIGN KEY (BRAND_ID) REFERENCES BRAND(ID)
-);
-
-
 INSERT INTO BRAND (NAME)
 VALUES ('ZARA');
 
@@ -32,3 +13,21 @@ VALUES (1, '2020-06-15 00:00:00', '2020-06-15 11:00:00', 3, 35455, 1, 30.50, 'EU
 INSERT INTO PRICE (BRAND_ID, START_DATE, END_DATE, PRICE_LIST, PRODUCT_ID, PRIORITY, PRICE, CURR)
 VALUES (1, '2020-06-15 16:00:00', '2020-12-31 23:59:59', 4, 35455, 1, 38.95, 'EUR');
 
+
+INSERT INTO Currency (currency_code) VALUES ('USD');
+INSERT INTO Currency (currency_code) VALUES ('EUR');
+INSERT INTO Currency (currency_code) VALUES ('GBP');
+INSERT INTO Currency (currency_code) VALUES ('JPY');
+INSERT INTO Currency (currency_code) VALUES ('INR');
+INSERT INTO Currency (currency_code) VALUES ('RUB');
+INSERT INTO Currency (currency_code) VALUES ('THB');
+INSERT INTO Currency (currency_code) VALUES ('TRY');
+INSERT INTO Currency (currency_code) VALUES ('UAH');
+INSERT INTO Currency (currency_code) VALUES ('CRC');
+INSERT INTO Currency (currency_code) VALUES ('MNT');
+INSERT INTO Currency (currency_code) VALUES ('KRW');
+INSERT INTO Currency (currency_code) VALUES ('NGN');
+INSERT INTO Currency (currency_code) VALUES ('ILS');
+INSERT INTO Currency (currency_code) VALUES ('SAR');
+INSERT INTO Currency (currency_code) VALUES ('PYG');
+INSERT INTO Currency (currency_code) VALUES ('LAK');

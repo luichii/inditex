@@ -2,7 +2,9 @@ package com.inditex.model;
 
 import java.time.LocalDateTime;
 
-public class Price {
+import static com.inditex.validation.CurrencyValidator.validateCurrency;
+
+public class PriceInfo {
     private Brand brand;
 
     private LocalDateTime startDate;
@@ -12,11 +14,14 @@ public class Price {
     private Integer priceList;
 
     private Long productId;
+    private Integer priority;
+    private Float price;
+    private String currency;
 
-    public Price() {
+    public PriceInfo() {
     }
 
-    public Price(Brand brand, LocalDateTime startDate, LocalDateTime endDate, Integer priceList, Long productId, Integer priority, Float price, String currency) {
+    public PriceInfo(Brand brand, LocalDateTime startDate, LocalDateTime endDate, Integer priceList, Long productId, Integer priority, Float price, String currency) {
         this.brand = brand;
         this.startDate = startDate;
         this.endDate = endDate;
@@ -25,9 +30,9 @@ public class Price {
         this.priority = priority;
         this.price = price;
         this.currency = currency;
-    }
 
-    private Integer priority;
+        validate();
+    }
 
     public Brand getBrand() {
         return brand;
@@ -83,6 +88,7 @@ public class Price {
 
     public void setPrice(Float price) {
         this.price = price;
+        validatePrice();
     }
 
     public String getCurrency() {
@@ -90,10 +96,25 @@ public class Price {
     }
 
     public void setCurrency(String currency) {
+        validateCurrency(currency);
         this.currency = currency;
     }
 
-    private Float price;
+    private void validate() {
+        validateDates();
+        validatePrice();
+        validateCurrency(currency);
+    }
 
-    private String currency;
+    private void validateDates() {
+        if (endDate.isBefore(startDate)) {
+            throw new com.inditex.validation.InvalidDateRangeException("End date cannot be before start date");
+        }
+    }
+
+    private void validatePrice() {
+        if (price == null || price <= 0) {
+            throw new com.inditex.validation.InvalidPriceException("Invalid price");
+        }
+    }
 }

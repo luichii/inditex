@@ -1,23 +1,20 @@
 package com.inditex.entity;
 
+import com.inditex.CurrencyEnum;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
 @Entity
+@Table(name = "currency")
 @NoArgsConstructor
-@Table(name = "brand")
-public class BrandEntity {
+public class CurrencyEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "name")
-    private String name;
-
-    public BrandEntity(Long id, String name) {
-        this.id = id;
-        this.name = name;
-    }
+    @Column(name = "currency_code")
+    @Enumerated(EnumType.STRING)
+    private CurrencyEnum currencyCode;
 }
