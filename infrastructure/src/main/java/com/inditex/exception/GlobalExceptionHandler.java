@@ -1,7 +1,7 @@
 package com.inditex.exception;
 
-import com.inditex.model.exception.DataFormatException;
-import com.inditex.model.exception.InvalidInputException;
+import com.inditex.core.exception.DataFormatException;
+import com.inditex.core.exception.InvalidInputException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;

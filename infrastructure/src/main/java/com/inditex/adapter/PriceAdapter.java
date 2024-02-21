@@ -1,7 +1,7 @@
 package com.inditex.adapter;
 
 
-import com.inditex.model.PriceInfo;
+import com.inditex.core.model.PriceInfo;
 import com.inditex.port.PricePort;
 import com.inditex.usecase.GetPriceUseCase;
 import lombok.RequiredArgsConstructor;

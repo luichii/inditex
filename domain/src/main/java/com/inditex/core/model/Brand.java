@@ -1,4 +1,4 @@
-package com.inditex.model;
+package com.inditex.core.model;
 
 
 public class Brand {
