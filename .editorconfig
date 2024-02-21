@@ -1,7 +1,3 @@
-# EditorConfig is a file format and collection of text editor plugins
-# for maintaining consistent coding styles between different editors
-# and IDEs.
-
 # top-most EditorConfig file
 root = true
 
@@ -9,24 +5,27 @@ root = true
 [*]
 end_of_line = lf
 insert_final_newline = true
+indent_size = 4
+max_line_length = 120  # Set a
 
 # Matches multiple files with brace expansion notation
 # Set default charset
-[*.{java,xml,yml,yaml,properties}]
+[*.{java,xml,yml,yaml,properties,dockerfile,editorconfig,gitignore,sql,md}]
 charset = utf-8
 indent_style = space
-indent_size = 4
 trim_trailing_whitespace = true
 
-# Java-specific settings
-[*.java]
-# Set tab width to 4 spaces
-indent_size = 4
-
-# YAML files
-[*.{yml,yaml}]
+# XML-specific settings
+[*.xml]
+# XML files indentation
 indent_size = 2
 
-# Properties files
-[*.properties]
+# SQL-specific settings
+[*.sql]
+# SQL files indentation
 indent_size = 2
+
+# Markdown-specific settings
+[*.md]
+indent_size = 2
+max_line_length = 80
