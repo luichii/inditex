@@ -1,9 +1,9 @@
-package com.inditex.model.exception;
+package com.inditex.core.exception;
 
-public class InvalidInputException extends RuntimeException {
+public class DataFormatException extends RuntimeException {
     private String message;
 
-    public InvalidInputException(String message) {
+    public DataFormatException(String message) {
         super(message);
         this.message = message;
     }

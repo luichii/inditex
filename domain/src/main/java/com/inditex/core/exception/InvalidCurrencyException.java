@@ -1,4 +1,4 @@
-package com.inditex.validation;
+package com.inditex.core.exception;
 
 public class InvalidCurrencyException extends RuntimeException {
     public InvalidCurrencyException(String message) {

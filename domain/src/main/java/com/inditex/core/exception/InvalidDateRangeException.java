@@ -1,4 +1,4 @@
-package com.inditex.validation;
+package com.inditex.core.exception;
 
 public class InvalidDateRangeException extends RuntimeException {
     public InvalidDateRangeException(String message) {

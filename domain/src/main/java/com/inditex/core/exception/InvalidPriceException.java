@@ -1,4 +1,4 @@
-package com.inditex.validation;
+package com.inditex.core.exception;
 
 public class InvalidPriceException extends RuntimeException {
     public InvalidPriceException(String message) {

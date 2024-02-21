@@ -1,6 +1,6 @@
 package com.inditex.usecase;
 
-import com.inditex.model.PriceInfo;
+import com.inditex.core.model.PriceInfo;
 
 import java.time.LocalDateTime;
 

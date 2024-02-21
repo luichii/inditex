@@ -1,8 +1,10 @@
-package com.inditex.model;
+package com.inditex.core.model;
 
 import java.time.LocalDateTime;
 
-import static com.inditex.validation.CurrencyValidator.validateCurrency;
+import static com.inditex.core.validation.CurrencyValidator.validateCurrency;
+import static com.inditex.core.validation.DateValidator.validateDates;
+import static com.inditex.core.validation.PriceValidator.validatePrice;
 
 public class PriceInfo {
     private Brand brand;
@@ -88,7 +90,7 @@ public class PriceInfo {
 
     public void setPrice(Float price) {
         this.price = price;
-        validatePrice();
+        validatePrice(price);
     }
 
     public String getCurrency() {
@@ -101,20 +103,8 @@ public class PriceInfo {
     }
 
     private void validate() {
-        validateDates();
-        validatePrice();
+        validateDates(startDate, endDate);
+        validatePrice(price);
         validateCurrency(currency);
-    }
-
-    private void validateDates() {
-        if (endDate.isBefore(startDate)) {
-            throw new com.inditex.validation.InvalidDateRangeException("End date cannot be before start date");
-        }
-    }
-
-    private void validatePrice() {
-        if (price == null || price <= 0) {
-            throw new com.inditex.validation.InvalidPriceException("Invalid price");
-        }
     }
 }
