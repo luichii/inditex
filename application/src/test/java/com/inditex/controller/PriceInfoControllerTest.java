@@ -1,7 +1,7 @@
 package com.inditex.controller;
 
-import com.inditex.mapper.PriceMapper2;
 import com.inditex.core.model.PriceInfo;
+import com.inditex.mapper.PriceMapper2;
 import com.inditex.openapi.samples.gen.springbootserver.model.GetPrices200ResponseDto;
 import com.inditex.usecase.GetPriceUseCase;
 import org.junit.jupiter.api.Test;

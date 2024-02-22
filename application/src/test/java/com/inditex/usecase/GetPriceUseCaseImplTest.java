@@ -1,8 +1,8 @@
 package com.inditex.usecase;
 
+import com.inditex.core.model.PriceInfo;
 import com.inditex.dto.PriceDTO;
 import com.inditex.mapper.PriceMapper2;
-import com.inditex.core.model.PriceInfo;
 import com.inditex.port.PriceRepositoryPort;
 import com.inditex.usecase.impl.GetPriceUseCaseImpl;
 import org.junit.jupiter.api.Test;

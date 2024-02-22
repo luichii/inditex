@@ -1,46 +1,46 @@
 debug: true
 
 openapi:
-  prices:
-    base-path: /
+    prices:
+        base-path: /
 
 spring:
-  h2:
-    console.enabled: true
-    console.path: /h2-console
-  mvc:
-    log-request-details: true
+    h2:
+        console.enabled: true
+        console.path: /h2-console
+    mvc:
+        log-request-details: true
 
-  beaninfo:
-    dump: true
-  datasource:
-    url: jdbc:h2:mem:mydb
-    username: sa
-    password: password
-    driverClassName: org.h2.Driver
-  jpa:
-    database-platform: org.hibernate.dialect.H2Dialect
-    hibernate:
-      ddl-auto: none
-  devtools:
-    restart:
-      enabled: true
-    remote:
-      debug:
-        enabled: true
-      local-port: 5005
-  http:
-    logging:
-      request:
-        include-client-info: true
-        include-query-string: true
-        include-payload: true
-        max-payload-length: 10000
+    beaninfo:
+        dump: true
+    datasource:
+        url: jdbc:h2:mem:mydb
+        username: sa
+        password: password
+        driverClassName: org.h2.Driver
+    jpa:
+        database-platform: org.hibernate.dialect.H2Dialect
+        hibernate:
+            ddl-auto: none
+    devtools:
+        restart:
+            enabled: true
+        remote:
+            debug:
+                enabled: true
+            local-port: 5005
+    http:
+        logging:
+            request:
+                include-client-info: true
+                include-query-string: true
+                include-payload: true
+                max-payload-length: 10000
 
 logging:
-  level:
-    root: DEBUG
-    org.springframework: DEBUG
-    org.springframework.http.converter.json: DEBUG
-    org.springframework.web.filter.CommonsRequestLoggingFilter: DEBUG
-    com.inditex: DEBUG
+    level:
+        root: DEBUG
+        org.springframework: DEBUG
+        org.springframework.http.converter.json: DEBUG
+        org.springframework.web.filter.CommonsRequestLoggingFilter: DEBUG
+        com.inditex: DEBUG

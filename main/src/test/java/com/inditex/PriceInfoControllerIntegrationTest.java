@@ -48,28 +48,28 @@ class PriceInfoControllerIntegrationTest {
 
     @Test
     void testRequest2() throws Exception {
-        performAndVerify("2020-06-14T16:00:00", 35455l, 1l, 2,
+        performAndVerify("2020-06-14T16:00:00", 35455L, 1L, 2,
             "2020-06-14T00:00:00", "2020-06-14T18:30:00", 25.45f,
             "EUR", "ZARA", 1);
     }
 
     @Test
     void testRequest3() throws Exception {
-        performAndVerify("2020-06-14T21:00:00", 35455l, 1l, 2,
+        performAndVerify("2020-06-14T21:00:00", 35455L, 1L, 2,
             "2020-06-14T00:00:00", "2020-12-31T23:59:59", 35.50f,
             "EUR", "ZARA", 3);
     }
 
     @Test
     void testRequest4() throws Exception {
-        performAndVerify("2020-06-15T10:00:00", 35455l, 1l, 3,
+        performAndVerify("2020-06-15T10:00:00", 35455L, 1L, 3,
             "2020-06-14T00:00:00", "2020-06-14T18:30:00", 25.45f,
             "EUR", "ZARA", 1);
     }
 
     @Test
     void testRequest5() throws Exception {
-        performAndVerify("2020-06-16T21:00:00", 35455l, 1l, 4,
+        performAndVerify("2020-06-16T21:00:00", 35455L, 1L, 4,
             "2020-06-14T00:00:00", "2020-12-31T23:59:59", 38.95f,
             "EUR", "ZARA", 1);
     }
@@ -96,9 +96,7 @@ class PriceInfoControllerIntegrationTest {
                 .param("brand_id", brandId.toString())
                 .contentType(MediaType.APPLICATION_JSON)
             )
-            .andDo(result -> {
-                System.out.println("Response Content: " + result.getResponse().getContentAsString());
-            })
+            .andDo(result -> System.out.println("Response Content: " + result.getResponse().getContentAsString()))
             .andExpect(MockMvcResultMatchers.status().isOk())
             .andExpect(MockMvcResultMatchers.content().contentType(MediaType.APPLICATION_JSON))
             .andExpect(MockMvcResultMatchers.jsonPath("$.product_id").value(productId))

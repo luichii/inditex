@@ -1,82 +1,82 @@
 openapi: 3.0.0
 info:
-  title: Prices API
-  version: 1.0.0
+    title: Prices API
+    version: 1.0.0
 servers:
-  - url: 'http://localhost:8080'
-    description: dev
+    -   url: 'http://localhost:8080'
+        description: dev
 paths:
-  /prices:
-    get:
-      summary: Get price info
-      operationId: getPrices
-      parameters: # Define query parameters here
-        - name: appliance_date
-          in: query
-          description: Appliance date of rating
-          required: true
-          schema:
-            type: string
-            format: date-time
-        - name: product_id
-          in: query
-          description: Product identifier
-          required: true
-          schema:
-            type: integer
-            format: int64
-        - name: brand_id
-          in: query
-          description: Brand identifier
-          required: true
-          schema:
-            type: integer
-            format: int64
-      responses:
-        '200':
-          description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/GetPrices200Response'
-        '400':
-          description: Incorrect input parameters
-          content:
-            application/json:
-              example:
-                error: "Incorrect input parameters"
-        '404':
-          description: Resource not found
-          content:
-            application/json:
-              example:
-                error: "Resource not found"
-        '500':
-          description: Internal server error
-          content:
-            application/json:
-              example:
-                error: "Internal server error"
+    /prices:
+        get:
+            summary: Get price info
+            operationId: getPrices
+            parameters: # Define query parameters here
+                -   name: appliance_date
+                    in: query
+                    description: Appliance date of rating
+                    required: true
+                    schema:
+                        type: string
+                        format: date-time
+                -   name: product_id
+                    in: query
+                    description: Product identifier
+                    required: true
+                    schema:
+                        type: integer
+                        format: int64
+                -   name: brand_id
+                    in: query
+                    description: Brand identifier
+                    required: true
+                    schema:
+                        type: integer
+                        format: int64
+            responses:
+                '200':
+                    description: Success
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/GetPrices200Response'
+                '400':
+                    description: Incorrect input parameters
+                    content:
+                        application/json:
+                            example:
+                                error: "Incorrect input parameters"
+                '404':
+                    description: Resource not found
+                    content:
+                        application/json:
+                            example:
+                                error: "Resource not found"
+                '500':
+                    description: Internal server error
+                    content:
+                        application/json:
+                            example:
+                                error: "Internal server error"
 components:
-  schemas:
-    GetPrices200Response:
-      type: object
-      properties:
-        product_id:
-          type: integer
-          format: int64
-        brand_name:
-          type: string
-        price_list:
-          type: integer
-        start_date:
-          type: string
-          format: date-time
-        end_date:
-          type: string
-          format: date-time
-        price:
-          type: number
-          format: double
-        currency:
-          type: string
+    schemas:
+        GetPrices200Response:
+            type: object
+            properties:
+                product_id:
+                    type: integer
+                    format: int64
+                brand_name:
+                    type: string
+                price_list:
+                    type: integer
+                start_date:
+                    type: string
+                    format: date-time
+                end_date:
+                    type: string
+                    format: date-time
+                price:
+                    type: number
+                    format: double
+                currency:
+                    type: string

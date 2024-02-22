@@ -1,7 +1,7 @@
 package com.inditex.mapper;
 
-import com.inditex.dto.BrandDTO;
 import com.inditex.core.model.Brand;
+import com.inditex.dto.BrandDTO;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 

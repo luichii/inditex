@@ -1,8 +1,8 @@
 package com.inditex.usecase.impl;
 
+import com.inditex.core.model.PriceInfo;
 import com.inditex.dto.PriceDTO;
 import com.inditex.mapper.PriceMapper2;
-import com.inditex.core.model.PriceInfo;
 import com.inditex.port.PriceRepositoryPort;
 import com.inditex.usecase.GetPriceUseCase;
 import org.springframework.stereotype.Service;
