@@ -1,12 +1,12 @@
 package com.inditex;
 
+import com.inditex.config.InditexConfig;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Import;
 
 @SpringBootApplication
-@ComponentScan(basePackages = {"com.inditex.repository", "com.inditex.openapi.api", "com.inditex.controller",
-    "com.inditex.usecase", "com.inditex.port", "com.inditex.adapter", "com.inditex.mapper"})
+@Import(InditexConfig.class)
 public class InditexApplication {
 
     public static void main(String[] args) {
